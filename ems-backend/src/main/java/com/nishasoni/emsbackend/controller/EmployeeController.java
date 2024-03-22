@@ -56,4 +56,9 @@ public class EmployeeController {
         return ResponseEntity.ok("Employee deleted successfully!.");
     }
 
+    @GetMapping("/department/{departmentName}")
+    public List<EmployeeDto> getEmployeesByDepartment(@PathVariable String departmentName) {
+        return employeeService.getEmployeesByDepartment(departmentName);
+    }
+
 }

@@ -69,4 +69,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         employeeRepository.deleteById(employeeId);
     }
+
+    @Override
+    public List<EmployeeDto> getEmployeesByDepartment(String departmentName) {
+        return employeeRepository.findByDepartment(departmentName);
+    }
 }
