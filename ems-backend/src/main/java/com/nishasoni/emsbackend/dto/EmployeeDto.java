@@ -1,5 +1,6 @@
 package com.nishasoni.emsbackend.dto;
 
+import com.nishasoni.emsbackend.entity.Department;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,4 +14,5 @@ public class EmployeeDto {
     private String firstName;
     private String lastName;
     private String email;
+    private Department department;
 }

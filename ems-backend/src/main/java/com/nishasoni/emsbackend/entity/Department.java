@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,4 +23,13 @@ public class Department {
 
     @Column(name = "department_description")
     private String departmentDescription;
+
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
+    private List<Employee> employees;
+
+    public Department(Long id, String departmentName, String departmentDescription) {
+        this.id = id;
+        this.departmentName = departmentName;
+        this.departmentDescription = departmentDescription;
+    }
 }
