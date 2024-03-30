@@ -4,8 +4,10 @@ import com.nishasoni.emsbackend.dto.EmployeeDto;
 import com.nishasoni.emsbackend.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+import java.util.*;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     List<EmployeeDto> findByDepartment(String departmentName);
+
+    Optional<Employee> findByEmployeeName(String employeename);
 }
