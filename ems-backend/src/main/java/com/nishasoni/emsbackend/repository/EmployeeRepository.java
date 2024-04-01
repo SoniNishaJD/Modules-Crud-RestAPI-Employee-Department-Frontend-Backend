@@ -10,4 +10,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     List<EmployeeDto> findByDepartment(String departmentName);
 
     Optional<Employee> findByEmployeeName(String employeename);
+
+    void saveImage(Long id, byte[] image);
+    byte[] getImage(Long id);
 }

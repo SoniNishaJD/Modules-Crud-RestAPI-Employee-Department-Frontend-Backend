@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -91,6 +92,20 @@ public class EmployeeController {
                 .headers(headers)
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)
                 .body(new InputStreamResource(stream));
+    }
+
+    @PostMapping("/{id}/uploadImage")
+    public ResponseEntity<String> uploadImage(@PathVariable Long id, @RequestParam("file") MultipartFile file) throws IOException {
+        employeeService.uploadImage(id, file);
+        return ResponseEntity.ok("Image Uploaded Successfully");
+    }
+
+    @GetMapping("/{id}/downloadImage")
+    public ResponseEntity<byte[]> downloadImage(@PathVariable Long id) {
+        byte[] imageData = employeeService.downloadImage(id);
+        return ResponseEntity.ok()
+                .contentType(MediaType.IMAGE_JPEG)
+                .body(imageData);
     }
 
 }

@@ -26,5 +26,8 @@ public class Employee {
     @JoinColumn(name = "department_id")
     private Department department;
 
+    @Lob
+    private byte[] image;
+
 
 }
